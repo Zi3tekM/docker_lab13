@@ -6,10 +6,32 @@
 ```bash
 docker compose up -d --build
 ```
+Wynik:
+```
+[+] Building 12.3s (7/7) FINISHED
+ => [php internal] load build definition from Dockerfile
+ => [php] FROM docker.io/library/php:8.2-fpm
+ => [php] RUN docker-php-ext-install mysqli pdo pdo_mysql
+[+] Running 5/5
+ ✔ Network lab13_frontend        Created
+ ✔ Network lab13_backend         Created
+ ✔ Container lab13-mysql-1       Started
+ ✔ Container lab13-php-1         Started
+ ✔ Container lab13-nginx-1       Started
+ ✔ Container lab13-phpmyadmin-1  Started
+```
 
 ### Sprawdzenie statusu kontenerów
 ```bash
 docker compose ps
+```
+Wynik:
+```
+NAME                    IMAGE          STATUS          PORTS
+lab13-mysql-1           mysql:8.0      Up              3306/tcp
+lab13-nginx-1           nginx:1.25     Up              0.0.0.0:4001->80/tcp
+lab13-php-1             lab13-php      Up              9000/tcp
+lab13-phpmyadmin-1      phpmyadmin:5.2 Up              0.0.0.0:6001->80/tcp
 ```
 
 ### Sprawdzenie logów
