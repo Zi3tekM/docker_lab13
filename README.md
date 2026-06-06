@@ -8,17 +8,16 @@ docker compose up -d --build
 ```
 Wynik:
 ```
-[+] Building 12.3s (7/7) FINISHED
- => [php internal] load build definition from Dockerfile
- => [php] FROM docker.io/library/php:8.2-fpm
- => [php] RUN docker-php-ext-install mysqli pdo pdo_mysql
-[+] Running 5/5
- ✔ Network lab13_frontend        Created
- ✔ Network lab13_backend         Created
- ✔ Container lab13-mysql-1       Started
- ✔ Container lab13-php-1         Started
- ✔ Container lab13-nginx-1       Started
- ✔ Container lab13-phpmyadmin-1  Started
+[+] up 39/39
+ ✔ Image nginx:1.25             Pulled                                 12.9s
+ ✔ Image phpmyadmin:5.2         Pulled                                 19.7s
+ ✔ Image lab13-php              Built                                  44.8s
+ ✔ Network lab13_backend        Created                                0.1s
+ ✔ Network lab13_frontend       Created                                0.1s
+ ✔ Container lab13-mysql-1      Created                                0.3s
+ ✔ Container lab13-phpmyadmin-1 Created                                0.3s
+ ✔ Container lab13-php-1        Created                                0.2s
+ ✔ Container lab13-nginx-1      Created                                0.1s
 ```
 
 ### Sprawdzenie statusu kontenerów
@@ -27,11 +26,11 @@ docker compose ps
 ```
 Wynik:
 ```
-NAME                    IMAGE          STATUS          PORTS
-lab13-mysql-1           mysql:8.0      Up              3306/tcp
-lab13-nginx-1           nginx:1.25     Up              0.0.0.0:4001->80/tcp
-lab13-php-1             lab13-php      Up              9000/tcp
-lab13-phpmyadmin-1      phpmyadmin:5.2 Up              0.0.0.0:6001->80/tcp
+NAME                 IMAGE            COMMAND                  SERVICE      CREATED          STATUS          PORTS
+lab13-mysql-1        mysql:8.0        "docker-entrypoint.s…"   mysql        45 seconds ago   Up 44 seconds   3306/tcp, 33060/tcp
+lab13-nginx-1        nginx:1.25       "/docker-entrypoint.…"   nginx        45 seconds ago   Up 43 seconds   0.0.0.0:4001->80/tcp, [::]:4001->80/tcp
+lab13-php-1          lab13-php        "docker-php-entrypoi…"   php          45 seconds ago   Up 44 seconds   9000/tcp
+lab13-phpmyadmin-1   phpmyadmin:5.2   "/docker-entrypoint.…"   phpmyadmin   45 seconds ago   Up 44 seconds   0.0.0.0:6001->80/tcp, [::]:6001->80/tcp
 ```
 
 ### Sprawdzenie logów
