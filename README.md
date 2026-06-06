@@ -84,3 +84,16 @@ Wynik:
     }
 ]
 ```
+
+### Test strony PHP (LEMP)
+```bash
+http://localhost:4001
+```
+
+### Test phpMyAdmin + testowa baza
+```bash
+http://localhost:6001  
+```
+Dane logowania:  
+Login: root  
+Hasło: rootpassword
